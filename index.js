@@ -9,7 +9,6 @@
 /**
  * Module dependencies.
  */
-var mixin = require('merge-descriptors');
 var api = require('./lib/api');
 var _ = require('underscore');
 var util = require('./lib/util');
