@@ -10,10 +10,11 @@
     "async": "^1.3.0",
     "debug": "^2.2.0",
     "express": "^4.13.0",
+    "raw-body": "^2.1.2",
     "underscore": "^1.8.3",
-    "wechat-crypto": "^0.0.2",
     "underscore.string": "^3.1.1",
     "wechat-api": "^1.9.3",
+    "wechat-crypto": "^0.0.2",
     "xml2js": "^0.4.9"
   },
   "devDependencies": {},
