@@ -1,5 +1,5 @@
 {
-  "name": "weixin",
+  "name": "weixin-trap",
   "version": "0.0.1",
   "description": "托管多个公众号",
   "main": "index.js",
