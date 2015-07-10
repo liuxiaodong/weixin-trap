@@ -1,6 +1,6 @@
 {
   "name": "weixin-trap",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "托管多个公众号",
   "main": "index.js",
   "directories": {
