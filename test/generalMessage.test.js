@@ -23,7 +23,7 @@ var news = [
 
 
 var helper;
-beforeEach(function(){
+before(function(){
   helper = new Helper();
 });
 

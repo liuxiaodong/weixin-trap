@@ -5,7 +5,7 @@ var config = require('./config');
 var openid = 'ovKXbsxcjA05QLUcShoQkAMfkECE';
 
 var helper;
-beforeEach(function(){
+before(function(){
   helper = new Helper();
 });
 

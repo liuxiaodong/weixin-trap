@@ -18,12 +18,15 @@
     "xml2js": "^0.4.9"
   },
   "devDependencies": {
+    "coveralls": "^2.11.2",
+    "mocha": "^2.2.5",
+    "mocha-lcov-reporter": "0.0.2",
     "q": "^1.4.1",
     "should": "^7.0.2",
     "supertest": "^1.0.1"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "make test"
   },
   "repository": {
     "type": "git",

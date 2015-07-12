@@ -4,7 +4,7 @@ var Helper = require('./helper');
 
 
 var helper;
-beforeEach(function(){
+before(function(){
   helper = new Helper();
 });
 
