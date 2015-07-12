@@ -6,7 +6,7 @@ COVERALLS = ./node_modules/coveralls/bin/coveralls.js
 test: 
 		$NODE_ENV=test $(MOCHA) -R $(REPORTER) -t $(TIMEOUT)
 
-test-cov:
+test-cov: lib-cov
 		$(MAKE) test REPORTER=html-cov > coverage.html
 
 lib-cov:
@@ -15,4 +15,4 @@ lib-cov:
 clean:
 		rm -r coverage.html
 		
-.PHONY: test clean
+.PHONY: test clean lib-cov
