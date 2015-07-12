@@ -17,7 +17,11 @@
     "wechat-crypto": "^0.0.2",
     "xml2js": "^0.4.9"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "q": "^1.4.1",
+    "should": "^7.0.2",
+    "supertest": "^1.0.1"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

@@ -43,25 +43,35 @@ function Weixin(options){
 
   this.api = {__proto__: api, weixin: this};
   this.util = {__proto__: util, weixin: this};
-  this.trap = trap;
+
   var defaultOptions = {
     getBody: true,
     parseXml: true,
     decrypt: true,
-    populate_user: false
+    attrNameProcessors: 'keep',
+    populate_user: false,
+    trapHandle: this.util.trapHandle
   };
   options = options || {};
-
   _.extend(defaultOptions, options);
 
-  // 是否需要从 req 中获取数据流
-  this.getBody = defaultOptions.getBody;
-  // 是否需要解析 xml
-  this.parseXml = defaultOptions.parseXml;
-  // 是否需要解密数据
-  this.decrypt = defaultOptions.decrypt;
-  // 微信推送时间过来是，如果带有 openid，是否扩展出用户信息
-  this.populate_user = defaultOptions.populate_user;
+
+  this.trap = trap.call({
+    // 微信实例
+    weixin: this,
+    // 微信事件的默认是处理函数
+    trapHandle: defaultOptions.trapHandle,
+    // 是否需要从 req 中获取数据流
+    getBody: defaultOptions.getBody,
+    // 是否需要解析 xml
+    parseXml: defaultOptions.parseXml,
+    // 是否需要解密数据
+    decrypt: defaultOptions.decrypt,
+    // 微信数据格式化
+    attrNameProcessors: defaultOptions.attrNameProcessors,
+    // 微信推送时间过来是，如果带有 openid，是否扩展出用户信息
+    populate_user: defaultOptions.populate_user
+  });
 
   // accessToken 的管理默认用 util 中的函数
   this.api.saveToken = this.util.saveToken;
@@ -75,8 +85,8 @@ function Weixin(options){
   this.api.getTicketToken = this.util.getTicketToken;
   this.api.saveTicketToken = this.util.saveTicketToken;
 
-  // 微信事件的默认是处理函数
-  this.trapHandle = this.util.trapHandle;
+  
+  //this.trap.trapHandle = this.util.trapHandle;
 
   // 用户自定义 config 管理函数
   if(typeof defaultOptions.saveConfig === 'function') this.util.saveConfig = defaultOptions.saveConfig;
@@ -94,9 +104,6 @@ function Weixin(options){
   // 用户自定义 ticket 管理函数
   if(typeof defaultOptions.getTicketToken === 'function') this.api.getTicketToken = defaultOptions.getTicketToken;
   if(typeof defaultOptions.saveTicketToken === 'function') this.api.saveTicketToken = defaultOptions.saveTicketToken;    
-
-  // 用户自定义的微信时间的默认处理函数
-  if(typeof defaultOptions.trapHandle === 'function') this.trapHandle = defaultOptions.trapHandle;
 
   if(defaultOptions.config) this.util.saveConfig(defaultOptions.config);  
 }
