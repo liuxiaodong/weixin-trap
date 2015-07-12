@@ -2,7 +2,6 @@ var request = require('supertest');
 var WXBizMsgCrypt = require('wechat-crypto');
 var crypto = require('crypto');
 var xml2js = require('xml2js');
-var _s = require('underscore.string');
 
 
 /*

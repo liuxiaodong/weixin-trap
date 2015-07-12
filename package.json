@@ -12,13 +12,13 @@
     "express": "^4.13.0",
     "raw-body": "^2.1.2",
     "underscore": "^1.8.3",
-    "underscore.string": "^3.1.1",
     "wechat-api": "^1.9.3",
     "wechat-crypto": "^0.0.2",
     "xml2js": "^0.4.9"
   },
   "devDependencies": {
     "coveralls": "^2.11.2",
+    "istanbul": "^0.3.17",
     "mocha": "^2.2.5",
     "mocha-lcov-reporter": "0.0.2",
     "q": "^1.4.1",
