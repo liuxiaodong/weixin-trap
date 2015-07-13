@@ -1,7 +1,7 @@
 {
   "name": "weixin-trap",
-  "version": "0.0.4",
-  "description": "托管多个公众号",
+  "version": "0.0.5",
+  "description": "托管多个公众号的 express 中间件",
   "main": "index.js",
   "directories": {
     "test": "test"

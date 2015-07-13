@@ -85,7 +85,7 @@ describe('Event Message', function(){
   it('reported location', function(done){
     var msg = '<MsgType><![CDATA[event]]></MsgType><Event><![CDATA[LOCATION]]></Event><Latitude>23.137466</Latitude><Longitude>113.352425</Longitude><Precision>119.385040</Precision>';
 
-    var p1 = helper.trapWrapper('reportedlocation', function(req, res){
+    var p1 = helper.trapWrapper('reportedLocation', function(req, res){
       req.body.Event.should.equal('LOCATION');
       req.body.Latitude.should.equal('23.137466');
       res.text('reported location');

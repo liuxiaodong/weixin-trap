@@ -15,7 +15,7 @@ describe('Shakearoundusershake Message', function(){
   it('shake', function(done){
     var msg = '<MsgType><![CDATA[event]]></MsgType><Event><![CDATA[ShakearoundUserShake]]></Event><ChosenBeacon><Uuid><![CDATA[121212121212]]></Uuid><Major>1111</Major><Minor>1111</Minor><Distance>0.057</Distance></ChosenBeacon><AroundBeacons><AroundBeacon><Uuid><![CDATA[121212121212]]></Uuid><Major>2222</Major><Minor>2222</Minor><Distance>166.816</Distance></AroundBeacon><AroundBeacon><Uuid><![CDATA[121212121212]]></Uuid><Major>3333</Major><Minor>3333</Minor><Distance>15.013</Distance></AroundBeacon></AroundBeacons>';
 
-    var p1 = helper.trapWrapper('shakearound', function(req, res){
+    var p1 = helper.trapWrapper('shakeAround', function(req, res){
       req.body.ChosenBeacon.Uuid.should.equal('121212121212');
       req.body.ChosenBeacon.Major.should.equal('1111');
       req.body.ChosenBeacon.Minor.should.equal('1111');
