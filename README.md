@@ -299,7 +299,9 @@ res.device('command text');
 ```
 ## API 
 
-	<a href="https://github.com/node-webot/wechat-api">wechat-api</a> 
+* api 部分没有测试
+
+<a href="https://github.com/node-webot/wechat-api">wechat-api</a> 
 
 
 ## Credit
