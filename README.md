@@ -30,6 +30,64 @@ trap.text('hi', function(req, res){
 
 ```
 
+## Options
+
+`getBody:`  是否 req 中的数据流，default true  
+
+`parseXml:` 是否解析 xml 为 json 数据，defalut true
+
+`decrypt:`  若数据加密，是否解密数据，default ture
+
+`attrNameProcessors:` 数据的格式化，例：{AppId:'123'} -> {app_id: '123'}，default 'keep'
+	* keep  保持不变  {AppId: '123'} -> {AppId: '123'}    
+	* lowerCase 转小写  {AppId: '123'} -> {appid: '123'}   
+	* underscored 转小写并以下划线间隔 {AppId: '123'} -> {app_id: '123'}  
+
+`populate_user:` 微信推送来的消息是否自动扩张出用户信息，默认 false
+	* 只能获取关注用户的用户信息  
+
+`trapHandle:` 对微信推送事件消息的默认处理函数，默认回复空字符串  
+
+`saveToken:` 存储 accessToken 的函数，默认存储在内存中。
+
+`getToken:` 获取 accessToken 函数。若配置了 saveToken 则必须要配置此函数，不然会找不到 accessToken 
+
+`getConfig:` 获取微信公众号的配置信息的函数  
+	* 设置此函数则可不用 config 参数，但获取到的数据格式为如下第一种样式  
+
+`config:` 微信公众号的配置 json 数据  
+	
+	```
+	{
+		"id": "gh_956b2584a111",
+		"token": "swechatcardtest",
+	 	"app_id": "wx309678780eb63111",
+		"app_secret": "f65a2f757b92787f137c359fa5699111",
+		"encrypt_key": "5iteleZLwN1UplKO08L7Fa57H5EuwPaTqnjvO85u111"
+	}
+
+	或者
+
+	[
+		{
+    		"id": "gh_956b2584a111",
+    		"token": "swechatcardtest",
+   	 		"app_id": "wx309678780eb63111",
+    		"app_secret": "f65a2f757b92787f137c359fa5699111",
+    		"encrypt_key": "5iteleZLwN1UplKO08L7Fa57H5EuwPaTqnjvO85u111"
+  		},
+  		{
+    		"id": "gh_ff831e3e9222",
+    		"token": "swechatcardtest",
+    		"app_id": "wxd1fbffa91579f222",
+    		"app_secret": "f11dcaf01dab462589cdeb43aeade222",
+    		"encrypt_key": "5iteleZLwN1UplKO08L7Fa57H5EuwPaTqnjvO85u222"      
+  		}
+	]
+	```
+
+
+
 ##消息处理
 =====
 
@@ -236,6 +294,9 @@ res.news(news);
 ```
 res.device('command text');
 ```
+## API 
+
+	<a href="https://github.com/node-webot/wechat-api">wechat-api</a> 
 
 
 ## Credit
