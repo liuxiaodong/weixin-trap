@@ -38,12 +38,14 @@ trap.text('hi', function(req, res){
 
 `decrypt:`  若数据加密，是否解密数据，default ture
 
-`attrNameProcessors:` 数据的格式化，例：{AppId:'123'} -> {app_id: '123'}，default 'keep'
-	* keep  保持不变  {AppId: '123'} -> {AppId: '123'}    
-	* lowerCase 转小写  {AppId: '123'} -> {appid: '123'}   
-	* underscored 转小写并以下划线间隔 {AppId: '123'} -> {app_id: '123'}  
+`attrNameProcessors:` 数据的格式化，例：{AppId:'123'} -> {app_id: '123'}，default 'keep'    
 
-`populate_user:` 微信推送来的消息是否自动扩张出用户信息，默认 false
+	* keep  保持不变  {AppId: '123'} -> {AppId: '123'}       
+	* lowerCase 转小写  {AppId: '123'} -> {appid: '123'}      
+	* underscored 转小写并以下划线间隔 {AppId: '123'} -> {app_id: '123'}    
+
+`populate_user:` 微信推送来的消息是否自动扩张出用户信息，默认 false  
+
 	* 只能获取关注用户的用户信息  
 
 `trapHandle:` 对微信推送事件消息的默认处理函数，默认回复空字符串  
@@ -53,6 +55,7 @@ trap.text('hi', function(req, res){
 `getToken:` 获取 accessToken 函数。若配置了 saveToken 则必须要配置此函数，不然会找不到 accessToken 
 
 `getConfig:` 获取微信公众号的配置信息的函数  
+
 	* 设置此函数则可不用 config 参数，但获取到的数据格式为如下第一种样式  
 
 `config:` 微信公众号的配置 json 数据  
@@ -296,7 +299,9 @@ res.device('command text');
 ```
 ## API 
 
-	<a href="https://github.com/node-webot/wechat-api">wechat-api</a> 
+* api 部分没有测试
+
+<a href="https://github.com/node-webot/wechat-api">wechat-api</a> 
 
 
 ## Credit
