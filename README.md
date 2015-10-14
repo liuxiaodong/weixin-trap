@@ -15,7 +15,40 @@ $ npm install weixin-trap --save
 
 ```
 var options = {
-	attrNameProcessors: 'underscored'
+	attrNameProcessors: 'underscored',
+	getConfig: function(id, callback){ // id 可能是 appid 或者是 wechat_id
+	  getConfigFun(id, function(err, ret){
+	      config = {};
+	      config.id = ret.wechat_id;
+	      config.appid = ret.appid;
+	      config.encryptkey = ret.encrypt_key;
+	      config.appsecret = ret.appsecret;
+	      config.token = ret.token;
+		  callback(null, config);
+	  });
+	},
+	saveToken: function(token, callback){
+      var exp = token.expireTime - 120;
+      var appid = this.appid;
+      db.setex('ACCESS_TOKEN:' + appid, exp, token.accessToken, function(err){
+        callback(err, token);
+      });
+	}
+	getToken: function(){
+      var appid = this.appid;
+      db.get('ACCESS_TOKEN:' + appid, function(err, accessToken){
+        if(err) return callback(err);
+        if(!accessToken) return callback();
+        var token = {
+          accessToken: accessToken
+        };
+        db.ttl('ACCESS_TOKEN:' + appid, function(err, exp){
+          if(err) return callback(err);
+          token.expireTime = exp;
+          callback(err, token);
+        });
+      });		
+	}
 };
 
 var weixin = require('weixin-trap')(options);
