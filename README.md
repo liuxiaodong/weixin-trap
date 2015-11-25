@@ -69,7 +69,7 @@ trap.text('hi', function(req, res){
 
 `parseXml:` 是否解析 xml 为 json 数据，defalut true
 
-`decrypt:`  若数据加密，是否解密数据，default ture
+`decrypt:`  若数据加密，是否解密数据，default true
 
 `attrNameProcessors:` 数据的格式化，例：{AppId:'123'} -> {app_id: '123'}，default 'keep'    
 
@@ -332,10 +332,20 @@ res.device('command text');
 ```
 ## API 
 
-* api 部分没有测试
+* api 部分对 wechat-api 进行了包装，在调用任何 api 时第一个参数可以传一个 appid 或微信公众号 id。 实现托管多个公众号时对微信 API 的调用  
+
+`例子:`  
+
+```
+	// 给用户发消息
+
+	weixin.api.sendText(appid, openid, text, callback);
+
+``` 
+
+* api 部分没有测试，如果遇到任何问题，请提 issues 或 PR   
 
 <a href="https://github.com/node-webot/wechat-api">wechat-api</a> 
-
 
 ## Credit
 
