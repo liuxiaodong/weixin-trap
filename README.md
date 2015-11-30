@@ -16,7 +16,7 @@ $ npm install weixin-trap --save
 ```
 var options = {
 	attrNameProcessors: 'underscored',
-	getConfig: function(id, callback){ // id 可能是 appid 或者是 wechat_id
+	getConfig: function(id, callback){ // id 可能是 appid 或者是 wechat_id, 也可能是其他任何值
 	  getConfigFun(id, function(err, ret){
 	      config = {};
 	      config.id = ret.wechat_id;
@@ -89,7 +89,9 @@ trap.text('hi', function(req, res){
 
 `getConfig:` 获取微信公众号的配置信息的函数  
 
-	* 设置此函数则可不用 config 参数，但获取到的数据格式为如下第一种样式  
+* getConfig 第一个参数为 appid 或公众号 id 或其他任何值，需要函数自己判断是否需要返回 config 信息。  
+
+* 设置此函数则可不用配置 config 参数，但获取到的数据格式为如下第一种样式  
 
 `config:` 微信公众号的配置 json 数据  
 	
