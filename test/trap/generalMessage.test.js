@@ -29,8 +29,22 @@ before(function(){
 
 describe('General Message', function(){
 
+  // 文本消息，未监听，返回控制
+  it('text msg and not listen', function(done){
+    helper = new Helper();
+    var msg = '<MsgType><![CDATA[text]]></MsgType><Content><![CDATA[this is a test]]></Content><MsgId>1234567890123456</MsgId>';
+
+    var p2 = helper.requestWrapper('post', config[0], openid, msg, true, function(err, ret){
+      should.not.exist(err);
+      ret.should.equal('');
+    });
+    helper.doneWapper(p2, done);
+
+  });
+
   // 文本消息
-  it('text msg', function(done){
+  it('text msg and textPattern is Reg', function(done){
+    helper = new Helper();
     var msg = '<MsgType><![CDATA[text]]></MsgType><Content><![CDATA[this is a test]]></Content><MsgId>1234567890123456</MsgId>';
 
     var textReg = /.*/ig;
@@ -46,6 +60,75 @@ describe('General Message', function(){
     helper.doneWapper(p1, p2, done);
 
   });
+
+  // 文本消息,文本匹配
+  it('text msg and textPattern is string', function(done){
+    helper = new Helper();
+    var msg = '<MsgType><![CDATA[text]]></MsgType><Content><![CDATA[this is a test]]></Content><MsgId>1234567890123456</MsgId>';
+
+    var textReg = 'this';
+    var funInvoke = false;
+    var p1 = helper.trapWrapper('text', textReg, function(req, res){
+      funInvoke = true;
+      req.body.Content.should.equal('this is a test');
+      res.should.have.property('text');
+      res.text('text');
+    });
+
+    var p2 = helper.trapWrapper('text', textReg, function(req, res){
+      req.body.Content.should.equal('this is a test');
+      res.should.have.property('text');
+      res.text('text');
+    });    
+    var p3 = helper.requestWrapper('post', config[0], openid, msg, true, function(err, ret){
+      should.not.exist(err);
+      ret.content.should.equal('text');
+      funInvoke.should.equal(false);
+    });
+    helper.doneWapper(p2, p3, done);
+
+  });  
+
+  // 文本消息,未匹配上
+  it('text msg and textPattern is string not match', function(done){
+    helper = new Helper();
+    var msg = '<MsgType><![CDATA[text]]></MsgType><Content><![CDATA[this is a test]]></Content><MsgId>1234567890123456</MsgId>';
+
+    var textReg = 'lalalla';
+    var p1Invoke = false;
+    var p1 = helper.trapWrapper('text', textReg, function(req, res){
+      p1Invoke = true;
+      req.body.Content.should.equal('this is a test');
+      res.should.have.property('text');
+      res.text('text');
+    });    
+    var p2 = helper.requestWrapper('post', config[0], openid, msg, true, function(err, ret){
+      p1Invoke.should.equal(false);
+      should.not.exist(err);
+      ret.should.equal('');
+    });
+    helper.doneWapper(p2, done);
+
+  }); 
+
+  // 文本消息,文本匹配
+  it('text msg and with default textPattern is function', function(done){
+    helper = new Helper();
+    var msg = '<MsgType><![CDATA[text]]></MsgType><Content><![CDATA[this is a test]]></Content><MsgId>1234567890123456</MsgId>';
+
+    var p1 = helper.trapWrapper('text', function(req, res){
+      req.body.Content.should.equal('this is a test');
+      res.should.have.property('text');
+      res.text('text');
+    });
+
+    var p2 = helper.requestWrapper('post', config[0], openid, msg, true, function(err, ret){
+      should.not.exist(err);
+      ret.content.should.equal('text');
+    });
+    helper.doneWapper(p1, p2, done);
+
+  });   
 
   // 图片消息
   it('image msg', function(done){

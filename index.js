@@ -89,23 +89,23 @@ function Weixin(options){
   //this.trap.trapHandle = this.util.trapHandle;
 
   // 用户自定义 config 管理函数
-  if(typeof defaultOptions.saveConfig === 'function') this.util.saveConfig = defaultOptions.saveConfig;
-  if(typeof defaultOptions.getConfig === 'function') this.util.getConfig = defaultOptions.getConfig;    
-  if(typeof defaultOptions.setConfig === 'function') this.util.setConfig = defaultOptions.setConfig;
+  if (typeof defaultOptions.saveConfig === 'function') this.util.saveConfig = defaultOptions.saveConfig;
+  if (typeof defaultOptions.getConfig === 'function') this.util.getConfig = defaultOptions.getConfig;    
+  if (typeof defaultOptions.setConfig === 'function') this.util.setConfig = defaultOptions.setConfig;
 
   // 用户可以自定义 accessToken 管理的函数
-  if(typeof defaultOptions.saveToken === 'function') this.api.saveToken = defaultOptions.saveToken;
-  if(typeof defaultOptions.getToken === 'function') this.api.getToken = defaultOptions.getToken;    
+  if (typeof defaultOptions.saveToken === 'function') this.api.saveToken = defaultOptions.saveToken;
+  if (typeof defaultOptions.getToken === 'function') this.api.getToken = defaultOptions.getToken;    
 
   // 用户自定义 oauth2 授权的取得的 accessToken 等信息管理函数
-  if(typeof defaultOptions.saveOauthToken === 'function') this.api.saveOauthToken = defaultOptions.saveOauthToken;
-  if(typeof defaultOptions.getOauthToken === 'function') this.api.getOauthToken = defaultOptions.getOauthToken;    
+  if (typeof defaultOptions.saveOauthToken === 'function') this.api.saveOauthToken = defaultOptions.saveOauthToken;
+  if (typeof defaultOptions.getOauthToken === 'function') this.api.getOauthToken = defaultOptions.getOauthToken;    
 
   // 用户自定义 ticket 管理函数
-  if(typeof defaultOptions.getTicketToken === 'function') this.api.getTicketToken = defaultOptions.getTicketToken;
-  if(typeof defaultOptions.saveTicketToken === 'function') this.api.saveTicketToken = defaultOptions.saveTicketToken;    
+  if (typeof defaultOptions.getTicketToken === 'function') this.api.getTicketToken = defaultOptions.getTicketToken;
+  if (typeof defaultOptions.saveTicketToken === 'function') this.api.saveTicketToken = defaultOptions.saveTicketToken;    
 
-  if(defaultOptions.config) this.util.saveConfig(defaultOptions.config);  
+  if (defaultOptions.config) this.util.saveConfig(defaultOptions.config);  
 }
 
 module.exports = Weixin;

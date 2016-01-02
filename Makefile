@@ -1,4 +1,4 @@
-TESTS = test/*.js
+TESTS = test/**/*.js
 REPORTER = spec
 TIMEOUT = 20000
 ISTANBUL = ./node_modules/.bin/istanbul
