@@ -27,7 +27,7 @@
     "supertest": "^1.0.1"
   },
   "scripts": {
-    "test": "make test"
+    "test": "make test-cov"
   },
   "repository": {
     "type": "git",
