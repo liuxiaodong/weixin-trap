@@ -334,7 +334,8 @@ res.device('command text');
 ```
 ## API 
 
-* api 部分对 wechat-api 进行了包装，在调用任何 api 时第一个参数可以传一个 appid 或微信公众号 id。 实现托管多个公众号时对微信 API 的调用  
+* api 部分对 wechat-api 进行了包装，在调用任何 API 时第一个参数可以传一个 appid 或微信公众号 id。 实现托管多个公众号时对微信 API 的调用   
+* api 部分没有测试，如果遇到任何问题，请提 issues 或 PR    
 
 `例子:`  
 
@@ -345,12 +346,27 @@ res.device('command text');
 
 ``` 
 
-* api 部分没有测试，如果遇到任何问题，请提 issues 或 PR   
+* 若某个微信 API wechat-api 没有提供，自己可以通过 weixin.api.make 函数扩展  
 
-<a href="https://github.com/node-webot/wechat-api">wechat-api</a> 
+`例子:`  
 
-## Credit
+```
+	// 批量获取用户基本信息
 
-weixin-trap 大量借鉴了 <a href="https://github.com/baoshan/wx">wx</a> 的源码内容，改写为可以托管多个公众号服务的模块
+	weixin.api.make(weixin.api, 'batchGetUsers', function (openids, callback) {
+	  var url = 'https://api.weixin.qq.com/cgi-bin/user/info/batchget?access_token=' + this.token.accessToken;
+	  var data = {};
+	  data.user_list = [];
+	  var openidsLength = openids.length;
+	  for(var i = 0; i < openidsLength; i++){
+	    data.user_list.push({openid: openids[i], language: 'zh-CN'});
+	  }
+	  this.request(url, this.postJSON(data), this.wrapper(callback));
+	});
 
-weixin-trap 的 API 部分使用了 <a href="https://github.com/node-webot/wechat-api">wechat-api</a> 模块，但为了适应系统的多公众号托管，对原接口进行了包装。这部分接口还没有测试 :><
+	* 此方法经过测试，若微信用户数据有特殊字符会导致 urllib 的 JSON.parse 抛出异常。  
+	* 可以接收返回 String 类型数据然后在自己处理    
+
+
+	* 调用此接口  weixin.api.batchGetUsers(appid, openids, callback);
+```
