@@ -147,7 +147,8 @@ describe('Event Message', function(){
     });
 
     var p2 = helper.requestWrapper('post', config[0], openid, msg, true, function(err, ret){
-      should.not.exist(ret);
+      ret = ret || '';
+      ret.should.equal('');
     });
 
     helper.doneWapper(p1, p2, done);
@@ -169,7 +170,8 @@ describe('Event Message', function(){
     });
 
     var p2 = helper.requestWrapper('post', config[0], openid, msg, true, function(err, ret){
-      should.not.exist(ret);
+      ret = ret || '';      
+      ret.should.equal('');
     });
 
     helper.doneWapper(p1, p2, done);
@@ -193,7 +195,8 @@ describe('Event Message', function(){
     });
 
     var p2 = helper.requestWrapper('post', config[0], openid, msg, true, function(err, ret){
-      should.not.exist(ret);
+      ret = ret || '';      
+      ret.should.equal('');
     });
 
     helper.doneWapper(p1, p2, done);
@@ -215,7 +218,8 @@ describe('Event Message', function(){
     });
 
     var p2 = helper.requestWrapper('post', config[0], openid, msg, true, function(err, ret){
-      should.not.exist(ret);
+      ret = ret || '';      
+      ret.should.equal('');
     });
 
     helper.doneWapper(p1, p2, done);
@@ -238,7 +242,8 @@ describe('Event Message', function(){
     });
 
     var p2 = helper.requestWrapper('post', config[0], openid, msg, true, function(err, ret){
-      should.not.exist(ret);
+      ret = ret || '';      
+      ret.should.equal('');
     });
 
     helper.doneWapper(p1, p2, done);
@@ -261,7 +266,8 @@ describe('Event Message', function(){
     });
 
     var p2 = helper.requestWrapper('post', config[0], openid, msg, true, function(err, ret){
-      should.not.exist(ret);
+      ret = ret || '';      
+      ret.should.equal('');
     });
 
     helper.doneWapper(p1, p2, done);

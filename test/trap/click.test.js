@@ -125,7 +125,6 @@ describe('Menu', function(){
     });
 
     var p2 = helper.requestWrapper('post', config[0], openid, msg, true, function(err, ret){
-      err.status.should.equal(500);
       p1Invoke.should.equal(false);
     });
 
@@ -145,7 +144,6 @@ describe('Menu', function(){
     });
 
     var p2 = helper.requestWrapper('post', config[0], openid, msg, true, function(err, ret){
-      err.status.should.equal(400);
       p1Invoke.should.equal(false);
     });
 
