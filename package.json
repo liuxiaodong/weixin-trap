@@ -27,7 +27,8 @@
     "supertest": "^1.0.1"
   },
   "scripts": {
-    "test": "make test-cov"
+    "test": "make test-cov",
+    "cov": "make test-coveralls"
   },
   "repository": {
     "type": "git",

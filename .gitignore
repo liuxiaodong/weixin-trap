@@ -1,5 +1,6 @@
 npm-debug.log
 node_modules
+.coveralls.yml
 coverage.html
 coverage
 lib-cov
