@@ -1,6 +1,6 @@
 {
   "name": "weixin-trap",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "托管多个公众号的 express 中间件",
   "main": "index.js",
   "directories": {
@@ -12,7 +12,7 @@
     "express": "^4.13.0",
     "raw-body": "^2.1.2",
     "underscore": "^1.8.3",
-    "wechat-api": "^1.25.1",
+    "wechat-api": "^1.32.0",
     "wechat-crypto": "^0.0.2",
     "xml2js": "^0.4.9"
   },
